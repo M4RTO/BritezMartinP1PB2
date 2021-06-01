@@ -7,6 +7,7 @@ public class BibliotecaTest {
 
     @Test
     public void existeBiblioteca(){
+        Libro libro = new Geografia("Argentina",1);
 
         Biblioteca biblioteca = new Biblioteca("Biblioteca Nacional");
 
