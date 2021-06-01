@@ -14,8 +14,8 @@ public class BibliotecaTest {
 
         List<Libro> libros = new ArrayList<>();
         Libro libro1 = new Geografia("Argentina",1,"Pepe");
-        Libro libro2 = new Matematica("Numeros",1,"Pepe");
-        Libro libro3 = new Historia("San Martin",1,"Pepe");
+        Libro libro2 = new Matematica("Numeros",2,"Pepe");
+        Libro libro3 = new Historia("San Martin",3,"Pepe");
 
         libros.add(libro1);
         libros.add(libro2);
@@ -30,5 +30,22 @@ public class BibliotecaTest {
         Assert.assertNotNull(biblioteca);
     }
 
-    public void
+    public void prestarLibros(){
+        Estudiante estudiante = new Estudiante("Martin","Britez",36822159);
+
+        List<Libro> libros = new ArrayList<>();
+        Libro libro1 = new Geografia("Argentina",1,"Pepe");
+        Libro libro2 = new Matematica("Numeros",2,"Pepe");
+        Libro libro3 = new Historia("San Martin",3,"Pepe");
+
+        libros.add(libro1);
+        libros.add(libro2);
+        libros.add(libro3);
+
+        List<Prestamo> prestamos = new ArrayList<>();
+
+        Biblioteca biblioteca = new Biblioteca("Biblioteca Nacional",libros,prestamos);
+
+        biblioteca.prestarLibro(3,estudiante);
+    }
 }
