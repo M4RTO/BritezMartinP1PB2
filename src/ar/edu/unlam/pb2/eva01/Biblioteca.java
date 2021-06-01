@@ -1,5 +1,6 @@
 package ar.edu.unlam.pb2.eva01;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Biblioteca {
@@ -38,14 +39,33 @@ public class Biblioteca {
         this.prestamos = prestamos;
     }
 
-    public void prestarLibro(int codigoLibro, Estudiante estudiante) {
+    public void prestarLibro(List<Integer> codigosLibro, Estudiante estudiante) {
+        List<Libro> libros = new ArrayList<>();
+
         for (Libro libro : this.libros) {
-            if(existeLibro(codigoLibro,libro.getCodigo())) {
-                if(libro.getHabilitado()){
-                   if(estudianteHabilidatoAAdquirirLibro(estudiant))
+            for (Integer codigoLibro : codigosLibro) {
+                if(existeLibro(codigoLibro,libro.getCodigo())) {
+                    if(libro.getHabilitado()){
+                        libro.setHabilitado(false);
+                        if(estudianteHabilitadoAAdquirirLibro(estudiante)) {
+                            libros.add(libro);
+                        }
+                    }
                 }
             }
+
         }
+        generarNuevoPrestamoDeLibro(estudiante,libros);
+    }
+
+    private void generarNuevoPrestamoDeLibro(Estudiante estudiante,List<Libro> libro) {
+        int numero = this.prestamos.size();
+        Prestamo prestamo = new Prestamo(numero + 1,estudiante,libro);
+        this.prestamos.add(prestamo);
+    }
+
+    private Boolean estudianteHabilitadoAAdquirirLibro(Estudiante estudiante) {
+        return true;
     }
 
     private boolean existeLibro(Integer codigoLibroPedido, Integer codigoLibroBiblioteca) {

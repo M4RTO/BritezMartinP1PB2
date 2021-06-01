@@ -13,4 +13,28 @@ public class Prestamo {
         this.estudiante = estudiante;
         this.librosPrestados = librosPrestados;
     }
+
+    public Integer getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
+    }
+
+    public Estudiante getEstudiante() {
+        return estudiante;
+    }
+
+    public void setEstudiante(Estudiante estudiante) {
+        this.estudiante = estudiante;
+    }
+
+    public List<Libro> getLibrosPrestados() {
+        return librosPrestados;
+    }
+
+    public void setLibrosPrestados(List<Libro> librosPrestados) {
+        this.librosPrestados = librosPrestados;
+    }
 }

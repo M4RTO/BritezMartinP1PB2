@@ -30,6 +30,7 @@ public class BibliotecaTest {
         Assert.assertNotNull(biblioteca);
     }
 
+    @Test
     public void prestarLibros(){
         Estudiante estudiante = new Estudiante("Martin","Britez",36822159);
 
@@ -46,6 +47,14 @@ public class BibliotecaTest {
 
         Biblioteca biblioteca = new Biblioteca("Biblioteca Nacional",libros,prestamos);
 
-        biblioteca.prestarLibro(3,estudiante);
+        List<Integer> codigosLibros = new ArrayList<>();
+        codigosLibros.add(1);
+        codigosLibros.add(3);
+
+        biblioteca.prestarLibro(codigosLibros,estudiante);
+
+        Assert.assertTrue(prestamos.get(0).getCodigo().equals(1));
+        Assert.assertTrue(prestamos.get(0).getLibrosPrestados().get(0).getCodigo().equals(1));
+        Assert.assertTrue(prestamos.get(0).getLibrosPrestados().get(1).getCodigo().equals(3));
     }
 }
