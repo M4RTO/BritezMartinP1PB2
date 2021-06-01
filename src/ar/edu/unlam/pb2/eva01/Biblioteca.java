@@ -77,4 +77,8 @@ public class Biblioteca {
             return false;
         }
     }
+
+    public Integer obtenerRegistroDePrestamos() {
+        return this.prestamos.size();
+    }
 }

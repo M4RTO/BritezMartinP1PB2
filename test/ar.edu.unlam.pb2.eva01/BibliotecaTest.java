@@ -85,4 +85,44 @@ public class BibliotecaTest {
 
         Assert.assertTrue(prestamos.get(0).getLibrosPrestados().size() == 0 );
     }
+
+    @Test
+    public void prestarLibrosYVerificarSiEstaHabilitadoElMismoParaPrestar(){
+        Estudiante estudiante = new Estudiante("Martin","Britez",36822159);
+
+        List<Libro> libros = new ArrayList<>();
+        Libro libro1 = new Geografia("Argentina",1,"Pepe");
+        libros.add(libro1);
+
+        List<Prestamo> prestamos = new ArrayList<>();
+        Biblioteca biblioteca = new Biblioteca("Biblioteca Nacional",libros,prestamos);
+
+        List<Integer> codigosLibros = new ArrayList<>();
+        codigosLibros.add(1);
+
+        biblioteca.prestarLibro(codigosLibros,estudiante);
+
+        Assert.assertFalse(libro1.getHabilitado());
+    }
+
+    @Test
+    public void verificarCuantosPrestamosSeHicieron(){
+        Estudiante estudiante = new Estudiante("Martin","Britez",36822159);
+
+        List<Libro> libros = new ArrayList<>();
+        Libro libro1 = new Geografia("Argentina",1,"Pepe");
+        libros.add(libro1);
+
+        List<Prestamo> prestamos = new ArrayList<>();
+        Biblioteca biblioteca = new Biblioteca("Biblioteca Nacional",libros,prestamos);
+
+        List<Integer> codigosLibros = new ArrayList<>();
+        codigosLibros.add(1);
+
+        biblioteca.prestarLibro(codigosLibros,estudiante);
+
+        Integer registros = biblioteca.obtenerRegistroDePrestamos();
+
+        Assert.assertTrue(registros == 1);
+    }
 }
