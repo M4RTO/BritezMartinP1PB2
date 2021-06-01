@@ -41,20 +41,22 @@ public class Biblioteca {
 
     public void prestarLibro(List<Integer> codigosLibro, Estudiante estudiante) {
         List<Libro> libros = new ArrayList<>();
-
-        for (Libro libro : this.libros) {
-            for (Integer codigoLibro : codigosLibro) {
-                if(existeLibro(codigoLibro,libro.getCodigo())) {
-                    if(libro.getHabilitado()){
-                        libro.setHabilitado(false);
-                        if(estudianteHabilitadoAAdquirirLibro(estudiante)) {
-                            libros.add(libro);
+        if(codigosLibro.size() < 3 ) {
+            for (Libro libro : this.libros) {
+                for (Integer codigoLibro : codigosLibro) {
+                    if(existeLibro(codigoLibro,libro.getCodigo())) {
+                        if(libro.getHabilitado()){
+                            libro.setHabilitado(false);
+                            if(estudianteHabilitadoAAdquirirLibro(estudiante)) {
+                                libros.add(libro);
+                            }
                         }
                     }
                 }
-            }
 
+            }
         }
+
         generarNuevoPrestamoDeLibro(estudiante,libros);
     }
 
