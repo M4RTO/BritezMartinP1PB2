@@ -125,4 +125,28 @@ public class BibliotecaTest {
 
         Assert.assertTrue(registros == 1);
     }
+
+    @Test
+    public void seDeseaObtenerInfoDelEstudianteAlQueSeLeHizoElPrestamo(){
+        Estudiante estudiante = new Estudiante("Martin","Britez",36822159);
+
+        List<Libro> libros = new ArrayList<>();
+        Libro libro1 = new Geografia("Argentina",1,"Pepe");
+        Libro libro2 = new Geografia("Argentina",2,"Pepe");
+        libros.add(libro1);
+        libros.add(libro2);
+
+        List<Prestamo> prestamos = new ArrayList<>();
+        Biblioteca biblioteca = new Biblioteca("Biblioteca Nacional",libros,prestamos);
+
+        List<Integer> codigosLibros = new ArrayList<>();
+        codigosLibros.add(1);
+        codigosLibros.add(2);
+
+        biblioteca.prestarLibro(codigosLibros,estudiante);
+
+        Prestamo prestamo = biblioteca.obtenerInfoDelPrestamo(1);
+
+        Assert.assertTrue(prestamo.getEstudiante().equals(estudiante));
+    }
 }

@@ -37,4 +37,15 @@ public class Prestamo {
     public void setLibrosPrestados(List<Libro> librosPrestados) {
         this.librosPrestados = librosPrestados;
     }
+
+    protected Boolean buscarPrestamoPorCodigoLibro(Integer codigoLibro) {
+        for (Libro librosPrestado : this.getLibrosPrestados()) {
+            if(librosPrestado.getCodigo().equals(codigoLibro)) {
+                return true;
+            }else {
+                return false;
+            }
+        }
+        return false;
+    }
 }

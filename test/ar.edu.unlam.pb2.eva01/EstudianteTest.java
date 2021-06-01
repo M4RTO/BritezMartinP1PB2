@@ -12,4 +12,12 @@ public class EstudianteTest {
         Assert.assertNotNull(estudiante);
 
     };
+
+    @Test
+    public void existeNuevoEstudiante() {
+        Estudiante estudiante = new Estudiante("Martin","Britez",36822159);
+
+        Assert.assertNotNull(estudiante);
+
+    };
 }

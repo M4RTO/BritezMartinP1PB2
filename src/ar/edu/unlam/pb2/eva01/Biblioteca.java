@@ -81,4 +81,15 @@ public class Biblioteca {
     public Integer obtenerRegistroDePrestamos() {
         return this.prestamos.size();
     }
+
+    public Prestamo obtenerInfoDelPrestamo(Integer codigoLibro) {
+        for (Prestamo prestamo : this.prestamos) {
+            if(prestamo.buscarPrestamoPorCodigoLibro(codigoLibro)) {
+                return prestamo;
+            };
+        }
+        return null;
+    }
+
+
 }
