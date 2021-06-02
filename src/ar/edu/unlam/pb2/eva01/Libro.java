@@ -6,12 +6,14 @@ public abstract class Libro {
     private Integer codigo;
     private String autor;
     private Boolean habilitado;
+    private TipoFotocopiable tipoFotocopiable;
 
-    public Libro(String nombre, Integer codigo, String autor) {
+    public Libro(String nombre, Integer codigo, String autor,TipoFotocopiable tipoFotocopiable) {
         this.nombre = nombre;
         this.codigo = codigo;
         this.autor = autor;
         this.habilitado = true;
+        this.tipoFotocopiable = tipoFotocopiable;
     }
 
     public String getNombre() {
@@ -44,5 +46,13 @@ public abstract class Libro {
 
     public void setHabilitado(Boolean habilitado) {
         this.habilitado = habilitado;
+    }
+
+    public TipoFotocopiable getTipoFotocopiable() {
+        return tipoFotocopiable;
+    }
+
+    public void setTipoFotocopiable(TipoFotocopiable tipoFotocopiable) {
+        this.tipoFotocopiable = tipoFotocopiable;
     }
 }

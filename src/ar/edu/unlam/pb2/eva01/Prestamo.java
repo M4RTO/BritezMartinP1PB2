@@ -38,14 +38,13 @@ public class Prestamo {
         this.librosPrestados = librosPrestados;
     }
 
-    protected Boolean buscarPrestamoPorCodigoLibro(Integer codigoLibro) {
+    protected  Boolean buscarPrestamoPorCodigoLibro(Integer codigoLibro) {
+        Integer resultado = 0;
         for (Libro librosPrestado : this.getLibrosPrestados()) {
             if(librosPrestado.getCodigo().equals(codigoLibro)) {
-                return true;
-            }else {
-                return false;
+                resultado = +1;
             }
         }
-        return false;
+        return resultado > 0;
     }
 }

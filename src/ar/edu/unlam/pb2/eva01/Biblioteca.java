@@ -9,10 +9,10 @@ public class Biblioteca {
     private List<Libro> libros;
     private List<Prestamo> prestamos;
 
-    public Biblioteca(String name, List<Libro> libros, List<Prestamo> prestamos) {
+    public Biblioteca(String name, List<Libro> libros) {
         this.name = name;
         this.libros = libros;
-        this.prestamos = prestamos;
+        this.prestamos = new ArrayList<>();
     }
 
     public String getName() {
@@ -92,4 +92,15 @@ public class Biblioteca {
     }
 
 
+    public void devolverLibro(int codigoLibro) {
+        for (Libro libro : this.libros) {
+            if(existeLibro(codigoLibro, libro.getCodigo())){
+                libro.setHabilitado(true);
+            }
+        }
+    }
+
+    public Boolean puedeImprimirLibro(Libro libro) {
+        return  libro.getTipoFotocopiable().equals(TipoFotocopiable.FOTOCOPIABLE);
+    }
 }

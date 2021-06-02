@@ -10,22 +10,18 @@ public class BibliotecaTest {
 
     @Test
     public void existeBiblioteca(){
-        Estudiante estudiante = new Estudiante("Martin","Britez",36822159);
 
         List<Libro> libros = new ArrayList<>();
-        Libro libro1 = new Geografia("Argentina",1,"Pepe");
-        Libro libro2 = new Matematica("Numeros",2,"Pepe");
-        Libro libro3 = new Historia("San Martin",3,"Pepe");
+        Libro libro1 = new Geografia("Argentina",1,"Pepe",TipoFotocopiable.FOTOCOPIABLE);
+        Libro libro2 = new Matematica("Numeros",2,"Pepe",TipoFotocopiable.NO_FOTOCOPIABLE);
+        Libro libro3 = new Historia("San Martin",3,"Pepe",TipoFotocopiable.FOTOCOPIABLE);
 
         libros.add(libro1);
         libros.add(libro2);
         libros.add(libro3);
 
-        List<Prestamo> prestamos = new ArrayList<>();
-        Prestamo prestamo = new Prestamo(1,estudiante,libros);
-        prestamos.add(prestamo);
 
-        Biblioteca biblioteca = new Biblioteca("Biblioteca Nacional",libros,prestamos);
+        Biblioteca biblioteca = new Biblioteca("Biblioteca Nacional",libros);
 
         Assert.assertNotNull(biblioteca);
     }
@@ -35,17 +31,16 @@ public class BibliotecaTest {
         Estudiante estudiante = new Estudiante("Martin","Britez",36822159);
 
         List<Libro> libros = new ArrayList<>();
-        Libro libro1 = new Geografia("Argentina",1,"Pepe");
-        Libro libro2 = new Matematica("Numeros",2,"Pepe");
-        Libro libro3 = new Historia("San Martin",3,"Pepe");
+        Libro libro1 = new Geografia("Argentina",1,"Pepe",TipoFotocopiable.FOTOCOPIABLE);
+        Libro libro2 = new Matematica("Numeros",2,"Pepe",TipoFotocopiable.NO_FOTOCOPIABLE);
+        Libro libro3 = new Historia("San Martin",3,"Pepe",TipoFotocopiable.FOTOCOPIABLE);
 
         libros.add(libro1);
         libros.add(libro2);
         libros.add(libro3);
 
-        List<Prestamo> prestamos = new ArrayList<>();
 
-        Biblioteca biblioteca = new Biblioteca("Biblioteca Nacional",libros,prestamos);
+        Biblioteca biblioteca = new Biblioteca("Biblioteca Nacional",libros);
 
         List<Integer> codigosLibros = new ArrayList<>();
         codigosLibros.add(1);
@@ -53,9 +48,9 @@ public class BibliotecaTest {
 
         biblioteca.prestarLibro(codigosLibros,estudiante);
 
-        Assert.assertTrue(prestamos.get(0).getCodigo().equals(1));
-        Assert.assertTrue(prestamos.get(0).getLibrosPrestados().get(0).getCodigo().equals(1));
-        Assert.assertTrue(prestamos.get(0).getLibrosPrestados().get(1).getCodigo().equals(3));
+        Assert.assertTrue(biblioteca.getPrestamos().get(0).getCodigo().equals(1));
+        Assert.assertTrue(biblioteca.getPrestamos().get(0).getLibrosPrestados().get(0).getCodigo().equals(1));
+        Assert.assertTrue(biblioteca.getPrestamos().get(0).getLibrosPrestados().get(1).getCodigo().equals(3));
     }
 
 
@@ -64,17 +59,16 @@ public class BibliotecaTest {
         Estudiante estudiante = new Estudiante("Martin","Britez",36822159);
 
         List<Libro> libros = new ArrayList<>();
-        Libro libro1 = new Geografia("Argentina",1,"Pepe");
-        Libro libro2 = new Matematica("Numeros",2,"Pepe");
-        Libro libro3 = new Historia("San Martin",3,"Pepe");
+        Libro libro1 = new Geografia("Argentina",1,"Pepe",TipoFotocopiable.FOTOCOPIABLE);
+        Libro libro2 = new Matematica("Numeros",2,"Pepe",TipoFotocopiable.NO_FOTOCOPIABLE);
+        Libro libro3 = new Historia("San Martin",3,"Pepe",TipoFotocopiable.FOTOCOPIABLE);
 
         libros.add(libro1);
         libros.add(libro2);
         libros.add(libro3);
 
-        List<Prestamo> prestamos = new ArrayList<>();
 
-        Biblioteca biblioteca = new Biblioteca("Biblioteca Nacional",libros,prestamos);
+        Biblioteca biblioteca = new Biblioteca("Biblioteca Nacional",libros);
 
         List<Integer> codigosLibros = new ArrayList<>();
         codigosLibros.add(1);
@@ -83,7 +77,7 @@ public class BibliotecaTest {
 
         biblioteca.prestarLibro(codigosLibros,estudiante);
 
-        Assert.assertTrue(prestamos.get(0).getLibrosPrestados().size() == 0 );
+        Assert.assertTrue(biblioteca.getPrestamos().get(0).getLibrosPrestados().size() == 0 );
     }
 
     @Test
@@ -91,11 +85,10 @@ public class BibliotecaTest {
         Estudiante estudiante = new Estudiante("Martin","Britez",36822159);
 
         List<Libro> libros = new ArrayList<>();
-        Libro libro1 = new Geografia("Argentina",1,"Pepe");
-        libros.add(libro1);
+        Libro libro1 = new Geografia("Argentina",1,"Pepe",TipoFotocopiable.FOTOCOPIABLE);
 
-        List<Prestamo> prestamos = new ArrayList<>();
-        Biblioteca biblioteca = new Biblioteca("Biblioteca Nacional",libros,prestamos);
+        libros.add(libro1);
+        Biblioteca biblioteca = new Biblioteca("Biblioteca Nacional",libros);
 
         List<Integer> codigosLibros = new ArrayList<>();
         codigosLibros.add(1);
@@ -110,11 +103,10 @@ public class BibliotecaTest {
         Estudiante estudiante = new Estudiante("Martin","Britez",36822159);
 
         List<Libro> libros = new ArrayList<>();
-        Libro libro1 = new Geografia("Argentina",1,"Pepe");
+        Libro libro1 = new Geografia("Argentina",1,"Pepe",TipoFotocopiable.FOTOCOPIABLE);
         libros.add(libro1);
 
-        List<Prestamo> prestamos = new ArrayList<>();
-        Biblioteca biblioteca = new Biblioteca("Biblioteca Nacional",libros,prestamos);
+        Biblioteca biblioteca = new Biblioteca("Biblioteca Nacional",libros);
 
         List<Integer> codigosLibros = new ArrayList<>();
         codigosLibros.add(1);
@@ -131,13 +123,12 @@ public class BibliotecaTest {
         Estudiante estudiante = new Estudiante("Martin","Britez",36822159);
 
         List<Libro> libros = new ArrayList<>();
-        Libro libro1 = new Geografia("Argentina",1,"Pepe");
-        Libro libro2 = new Geografia("Argentina",2,"Pepe");
+        Libro libro1 = new Geografia("Argentina",1,"Pepe",TipoFotocopiable.FOTOCOPIABLE);
+        Libro libro2 = new Matematica("Numeros",2,"Pepe",TipoFotocopiable.NO_FOTOCOPIABLE);
         libros.add(libro1);
         libros.add(libro2);
 
-        List<Prestamo> prestamos = new ArrayList<>();
-        Biblioteca biblioteca = new Biblioteca("Biblioteca Nacional",libros,prestamos);
+        Biblioteca biblioteca = new Biblioteca("Biblioteca Nacional",libros);
 
         List<Integer> codigosLibros = new ArrayList<>();
         codigosLibros.add(1);
@@ -149,4 +140,60 @@ public class BibliotecaTest {
 
         Assert.assertTrue(prestamo.getEstudiante().equals(estudiante));
     }
+
+
+    @Test
+    public void estudianteDevuelveLibroYSeverificaQueEsteHabilitado() {
+        Estudiante estudiante = new Estudiante("Martin","Britez",36822159);
+
+        List<Libro> libros = new ArrayList<>();
+        Libro libro1 = new Geografia("Argentina",1,"Pepe",TipoFotocopiable.FOTOCOPIABLE);
+        Libro libro2 = new Matematica("Numeros",2,"Pepe",TipoFotocopiable.NO_FOTOCOPIABLE);
+        Libro libro3 = new Historia("San Martin",3,"Pepe",TipoFotocopiable.FOTOCOPIABLE);
+
+        libros.add(libro1);
+        libros.add(libro2);
+        libros.add(libro3);
+
+        Biblioteca biblioteca = new Biblioteca("Biblioteca Nacional",libros);
+
+
+        List<Integer> codigosLibros = new ArrayList<>();
+        codigosLibros.add(1);
+        codigosLibros.add(3);
+
+        biblioteca.prestarLibro(codigosLibros,estudiante);
+
+
+
+        biblioteca.devolverLibro(1);
+
+        Assert.assertTrue(libro1.getHabilitado());
+
+    };
+
+    @Test
+    public void imprimirLibrosQueSeanPosibles() {
+
+        List<Libro> libros = new ArrayList<>();
+        Libro libro1 = new Geografia("Argentina",1,"Pepe",TipoFotocopiable.FOTOCOPIABLE);
+        Libro libro2 = new Matematica("Numeros",2,"Pepe",TipoFotocopiable.NO_FOTOCOPIABLE);
+        Libro libro3 = new Historia("San Martin",3,"Pepe",TipoFotocopiable.FOTOCOPIABLE);
+
+        libros.add(libro1);
+        libros.add(libro2);
+        libros.add(libro3);
+
+        Biblioteca biblioteca = new Biblioteca("Biblioteca Nacional",libros);
+
+
+        Boolean libro1PuedeImprimir = biblioteca.puedeImprimirLibro(libro1);
+        Boolean libro2PuedeImprimir = biblioteca.puedeImprimirLibro(libro2);
+        Boolean libro3PuedeImprimir = biblioteca.puedeImprimirLibro(libro3);
+
+        Assert.assertTrue(libro1PuedeImprimir);
+        Assert.assertFalse(libro2PuedeImprimir);
+        Assert.assertTrue(libro3PuedeImprimir);
+
+    };
 }
